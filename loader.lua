@@ -1,6 +1,51 @@
-local p = string.char(116,97,108,108,101,114,101,115,49)
-local g = Instance.new("ScreenGui", game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui"))
-local f = Instance.new("Frame", g) f.Size = UDim2.new(0,300,0,150) f.Position = UDim2.new(0.5,-150,0.5,-75) f.BackgroundColor3 = Color3.fromRGB(230,240,255) Instance.new("UICorner", f).CornerRadius = UDim.new(0,12)
-local t = Instance.new("TextBox", f) t.Size = UDim2.new(0.8,0,0.25,0) t.Position = UDim2.new(0.1,0,0.3,0) t.PlaceholderText = "Contraseña..." t.BackgroundColor3 = Color3.fromRGB(255,255,255) t.TextColor3 = Color3.fromRGB(0,0,0) t.Font = Enum.Font.Gotham t.TextScaled = true Instance.new("UICorner", t).CornerRadius = UDim.new(0,8)
-local b = Instance.new("TextButton", f) b.Size = UDim2.new(0.5,0,0.25,0) b.Position = UDim2.new(0.25,0,0.65,0) b.Text = "Aceptar" b.BackgroundColor3 = Color3.fromRGB(0,120,215) b.TextColor3 = Color3.fromRGB(255,255,255) b.Font = Enum.Font.GothamBold b.TextScaled = true Instance.new("UICorner", b).CornerRadius = UDim.new(0,8)
-b.MouseButton1Click:Connect(function() if t.Text == p then g:Destroy() loadstring(game:HttpGet("https://raw.githubusercontent.com/tienkhanh1/spicy/main/Chilli.lua"))() else b.Text = "❌" wait(1) b.Text = "Aceptar" end end)
+local password = "talleres1"
+local g = Instance.new("ScreenGui", game.Players.LocalPlayer:WaitForChild("PlayerGui"))
+
+local f = Instance.new("Frame", g)
+f.Size = UDim2.new(0, 400, 0, 250)
+f.Position = UDim2.new(0.5, -200, 0.5, -125)
+f.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+Instance.new("UICorner", f).CornerRadius = UDim.new(0, 14)
+
+-- Texto título
+local title = Instance.new("TextLabel", f)
+title.Text = "Enter Password"
+title.Font = Enum.Font.GothamBold
+title.TextColor3 = Color3.fromRGB(255, 255, 255)
+title.TextScaled = true
+title.BackgroundTransparency = 1
+title.Size = UDim2.new(1, -40, 0.15, 0)
+title.Position = UDim2.new(0, 20, 0, 30)
+
+-- Input
+local input = Instance.new("TextBox", f)
+input.PlaceholderText = "Password..."
+input.Size = UDim2.new(0.8, 0, 0.15, 0)
+input.Position = UDim2.new(0.1, 0, 0.45, 0)
+input.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+input.TextColor3 = Color3.fromRGB(255, 255, 255)
+input.TextScaled = true
+input.Font = Enum.Font.Gotham
+Instance.new("UICorner", input).CornerRadius = UDim.new(0, 10)
+
+-- Botón
+local button = Instance.new("TextButton", f)
+button.Text = "Ingresar"
+button.Font = Enum.Font.GothamBold
+button.Size = UDim2.new(0.6, 0, 0.15, 0)
+button.Position = UDim2.new(0.2, 0, 0.7, 0)
+button.BackgroundColor3 = Color3.fromRGB(0, 132, 255)
+button.TextColor3 = Color3.fromRGB(255, 255, 255)
+button.TextScaled = true
+Instance.new("UICorner", button).CornerRadius = UDim.new(0, 10)
+
+button.MouseButton1Click:Connect(function()
+	if input.Text == password then
+		g:Destroy()
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/tienkhanh1/spicy/main/Chilli.lua"))()
+	else
+		button.Text = "❌ Incorrecta"
+		wait(1.5)
+		button.Text = "Ingresar"
+	end
+end)
